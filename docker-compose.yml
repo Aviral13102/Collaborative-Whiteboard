@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7
+    restart: unless-stopped
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_data:/data/db
+
+  app:
+    build: .
+    restart: unless-stopped
+    ports:
+      - '3001:3001'
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - MONGODB_URI=mongodb://mongodb:27017/whiteboard
+      - JWT_SECRET=${JWT_SECRET:-whiteboard-production-secret-change-me}
+      - CLIENT_URL=http://localhost:3001
+    depends_on:
+      - mongodb
+
+volumes:
+  mongo_data:
