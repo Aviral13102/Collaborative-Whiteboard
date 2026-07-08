@@ -95,5 +95,4 @@ The application will be available on port `3001`.
 ---
 
 ## 👨‍💻 Author
-**Aviral Singh** (23BBS0156)  
-*3rd Year Computer Science Project*
+**Aviral Singh**  
